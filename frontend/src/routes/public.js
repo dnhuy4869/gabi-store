@@ -5,6 +5,7 @@ import Cart from "pages/public/Cart";
 import Blog from "pages/public/Blog";
 import DeliverInfo from "pages/public/DeliverInfo";
 import Story from "pages/public/Story";
+import StoryDetail from "pages/public/Home/Story/StoryDetail";
 import Slider from "pages/public/Home/Slider";
 import PostItem from "pages/public/Home/PostItem";
 import Description from "pages/public/Home/Description";
@@ -37,6 +38,7 @@ export const publicRoutes = {
         { path: '/blog', element: <Blog /> },
         { path: '/deliverInfo', element: <DeliverInfo /> },
         { path: '/story', element: <Story /> },
+        { path: '/storydetail', element: <StoryDetail /> },
         { path: '/slider', element: <Slider /> },
         { path: '/postitem', element: <PostItem /> },
         { path: '/description', element: <Description /> },
