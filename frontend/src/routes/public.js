@@ -60,5 +60,8 @@ export const publicRoutes = {
         { path: '/following', element: <Following /> },
         { path: '/confirmorder', element: <ConfirmOrder /> },
         { path: '/policy', element: <Policy /> },
+        { path: '/rules', element: <Rules /> },
+        { path: '/Information', element: <Information /> },
+        
     ]
 };
