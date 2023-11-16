@@ -363,13 +363,13 @@ function ProductAll() {
                 <div className="w-full px-3 mb-6 sm:w-1/2 md:w-1/3">
                   <div className="border border-gray-200 rounded-md dark:border-gray-800">
                     <div className="relative bg-gray-200">
-                      <a href="#" className>
+                      <Link to="/shirtdetail" className>
                         <img
                           src="https://i.postimg.cc/NGCTCW70/pexels-mike-250288.jpg"
                           alt
                           className="object-cover w-full h-56 mx-auto "
                         />
-                      </a>
+                      </Link>
                       <div className="absolute top-0 right-0 z-10 m-1 flex items-center justify-center w-16 h-16 p-5 text-center text-gray-100 bg-red-600 rounded-full shadow-xl ">
                         <span className="relative text-base font-semibold text-gray-200 ">
                           {" "}
@@ -382,7 +382,7 @@ function ProductAll() {
                         <h3 className="text-xl font-medium dark:text-gray-400">
                           Product name
                         </h3>
-                        <a href="#" className>
+                        <Link to="shirtdetail" className>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width={16}
@@ -393,7 +393,7 @@ function ProductAll() {
                           >
                             <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                           </svg>
-                        </a>
+                        </Link>
                       </div>
                       <div className="mb-4 ">
                         <p className="text-lg flex justify-between">

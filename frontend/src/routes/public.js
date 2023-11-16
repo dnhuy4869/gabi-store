@@ -25,7 +25,6 @@ import Policy from "pages/public/Policy";
 import BlogDetail from "pages/public/Blog/BlogDetail";
 import Rules from "pages/public/Rules";
 import Information from "pages/public/Information";
-
 export const publicRoutes = {
     path: '/',
     element: <PublicLayout />,
@@ -37,7 +36,7 @@ export const publicRoutes = {
         { path: '/cart', element: <Cart /> },
         { path: '/blog', element: <Blog /> },
         { path: '/blogdetail', element: <BlogDetail /> },
-
+        { path: '/shirtdetail', element: <ShirtDetail /> },
         { path: '/deliverInfo', element: <DeliverInfo /> },
         { path: '/story', element: <Story /> },
         { path: '/slider', element: <Slider /> },
