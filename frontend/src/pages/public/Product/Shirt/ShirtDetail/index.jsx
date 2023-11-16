@@ -2,9 +2,9 @@
 function ShirtDetail() {
   return (
     <>
-    <div className="w-screen">
+    <div className="">
     <section className="py-10 font-poppins">
-        <div className="max-w-6xl px-7 mx-auto bg-slate-200">
+        <div className="max-w-6xl px-7 mx-auto bg-stone-100">
           <div className="flex flex-wrap mb-24 -mx-4">
             <div className="w-full px-4 mb-8 md:w-1/2 md:mb-0">
               <div className="sticky top-0 overflow-hidden ">
