@@ -26,7 +26,6 @@ import ConfirmOrder from "pages/public/ConfirmOrder"
 import Policy from "pages/public/Policy";
 import Glasses from "pages/public/Product/Glasses";
 
-
 export const publicRoutes = {
     path: '/',
     element: <PublicLayout />,
