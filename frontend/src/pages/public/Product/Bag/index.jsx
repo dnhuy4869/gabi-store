@@ -1,62 +1,24 @@
-// import classNames from 'classnames/bind';
-// import styles from './Pants.module.scss';
-// import { Link, useNavigate } from 'react-router-dom';
-// import { useEffect, useState } from 'react';
-// import PantsDetail from './PantsDetail';
-// import axios from 'axios';
-// import PantsCards from './PantsCards';
+import React from "react";
 
-import { Link } from "react-router-dom";
-
-// const cx = classNames.bind(styles);
-
-// function Pants() {
-//     const [pants, setPants] = useState([]);
-//     const navigate = useNavigate();
-//     useEffect(() => {
-//         axios.get('http://localhost:8000/pants')
-//             .then (data => setPants(data.data))
-//     }, []);
-
-//     return (
-//         <div className={cx('wrapper__total')}>
-//             <h1>Quần short nam</h1>
-//             <div className={cx('wrapper')}>
-//                 {/* <h1 className='title'>BestSeller</h1> */}
-//                 <div className={cx('inner')}>
-//                     {pants.map((pant) => (
-//                         <PantsCards item={pant} key={pant.id} />
-//                     ))}
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default Pants;
-
-function Pants() {
+const Bag = () => {
   return (
-    <div className="">
-      {/* banner  */}
-
-      <img
+   <div> 
+     <img
         className="h-[300px] object-cover  w-[100%] rounded-lg"
         src={
-          "//theme.hstatic.net/200000690725/1001078549/14/slide_1_img.jpg?v=202"
+          "https://images.unsplash.com/photo-1630381260512-e3fe55c11973?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
       />
-
       <section className="py-20 bg-gray-50 font-poppins dark:bg-gray-800  ">
         <div className="px-4 py-4 mx-auto max-w-7xl lg:py-6 md:px-6">
           {/* Breadcumb */}
-
+  
           <nav className="flex mb-2" aria-label="Breadcrumb">
             <ol className="inline-flex items-center space-x-1 md:space-x-3">
               <li className="inline-flex items-center">
-                <Link
-                  to="/"
-                  className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+                <a
+                  href="#"
+                  className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-white"
                 >
                   <svg
                     className="w-3 h-3 mr-2.5"
@@ -68,7 +30,7 @@ function Pants() {
                     <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                   </svg>
                   Trang chủ
-                </Link>
+                </a>
               </li>
               <li>
                 <div className="flex items-center">
@@ -87,42 +49,17 @@ function Pants() {
                       d="m1 9 4-4-4-4"
                     />
                   </svg>
-                  <Link
-                    to="/product"
+                  <a
+                    href="#"
                     className="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white"
                   >
                     Sản phẩm
-                  </Link>
-                </div>
-              </li>
-              <li aria-current="page">
-                <div className="flex items-center">
-                  <svg
-                    className="w-3 h-3 text-gray-400 mx-1"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 6 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="m1 9 4-4-4-4"
-                    />
-                  </svg>
-                  <Link
-                    to="/product/polo"
-                    className="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white"
-                  >
-                    Quần short
-                  </Link>
+                  </a>
                 </div>
               </li>
             </ol>
           </nav>
-
+  
           <div className="flex flex-wrap mb-24 -mx-3 ">
             <div className="w-full pr-4 lg:w-1/4 lg:block  ">
               <div className="p-4 mb-5 bg-white border border-gray-200 dark:border-gray-900 dark:bg-gray-900">
@@ -140,7 +77,7 @@ function Pants() {
                       <span className="text-lg">Tất cả sản phẩm</span>
                     </label>
                   </li>
-
+  
                   <li className="mb-4">
                     <label
                       htmlFor
@@ -156,9 +93,7 @@ function Pants() {
                       className="flex items-center dark:text-gray-400 "
                     >
                       <input type="checkbox" className="w-4 h-4 mr-2 " />
-                      <span className="text-lg capitalize">
-                        Áo thun thể thao
-                      </span>
+                      <span className="text-lg capitalize">Áo thun thể thao</span>
                     </label>
                   </li>
                   <li className="mb-4">
@@ -170,7 +105,7 @@ function Pants() {
                       <span className="text-lg capitalize">Quần short nam</span>
                     </label>
                   </li>
-
+  
                   <li className="mb-4">
                     <label
                       htmlFor
@@ -180,7 +115,7 @@ function Pants() {
                       <span className="text-lg capitalize">Túi xách nam</span>
                     </label>
                   </li>
-
+  
                   <li className="mb-4">
                     <label
                       htmlFor
@@ -192,11 +127,9 @@ function Pants() {
                   </li>
                 </ul>
               </div>
-
+  
               <div className="p-4 mb-5 bg-white border border-gray-200 dark:border-gray-900 dark:bg-gray-900">
-                <h2 className="text-2xl font-bold dark:text-gray-400">
-                  Màu sắc
-                </h2>
+                <h2 className="text-2xl font-bold dark:text-gray-400">Màu sắc</h2>
                 <div className="w-16 pb-2 mb-6 border-b border-rose-600 dark:border-gray-400" />
                 <div className="flex flex-wrap -mx-2 -mb-2">
                   <button className="p-1 mb-2 mr-4 ">
@@ -231,14 +164,14 @@ function Pants() {
                   </button>
                 </div>
               </div>
-
+  
               {/* Box */}
             </div>
             <div className="w-full px-3 lg:w-3/4 ">
               <div className="px-3 ">
                 <div className=" items-center justify-between hidden px-4 py-2 mb-4 bg-gray-100 md:flex dark:bg-gray-900 ">
                   {/* input search */}
-
+  
                   <form>
                     <div className="flex items-center">
                       <button
@@ -280,7 +213,7 @@ function Pants() {
                               Áo Polo
                             </button>
                           </li>
-
+  
                           <li>
                             <button
                               type="button"
@@ -297,7 +230,7 @@ function Pants() {
                               quần short nam
                             </button>
                           </li>
-
+  
                           <li>
                             <button
                               type="button"
@@ -306,7 +239,7 @@ function Pants() {
                               túi xách nam
                             </button>
                           </li>
-
+  
                           <li>
                             <button
                               type="button"
@@ -349,7 +282,7 @@ function Pants() {
                       </div>
                     </div>
                   </form>
-
+  
                   <div className="flex items-center justify-between">
                     <div>
                       <select
@@ -365,11 +298,9 @@ function Pants() {
                   </div>
                 </div>
               </div>
-
-              <h1 className="text-[30px] my-[20px] font-semibold">
-                Quần short
-              </h1>
-
+  
+              <h1 className="text-[30px] my-[20px] font-semibold">Túi xách</h1>
+  
               {/* All product */}
               <div className="flex flex-wrap items-center ">
                 <div className="w-full px-3 mb-6 sm:w-1/2 md:w-1/3">
@@ -416,7 +347,7 @@ function Pants() {
                           </span>
                         </p>
                       </div>
-
+  
                       <a
                         href="#"
                         className="flex justify-center px-4 py-2 bg-indigo-700 text-gray-100 border border-indigo-300 rounded-full hover:opacity-[0.9]"
@@ -426,7 +357,7 @@ function Pants() {
                     </div>
                   </div>
                 </div>
-
+  
                 <div className="w-full px-3 mb-6 sm:w-1/2 md:w-1/3">
                   <div className="border border-gray-200 rounded-md dark:border-gray-800 shadow p-2 ">
                     <div className="relative bg-gray-200">
@@ -465,7 +396,7 @@ function Pants() {
                           </span>
                         </p>
                       </div>
-
+  
                       <a
                         href="#"
                         className="flex justify-center px-4 py-2 bg-indigo-700 text-gray-100 border border-indigo-300 rounded-full hover:opacity-[0.9]"
@@ -475,7 +406,7 @@ function Pants() {
                     </div>
                   </div>
                 </div>
-
+  
                 <div className="w-full px-3 mb-6 sm:w-1/2 md:w-1/3">
                   <div className="border border-gray-200 rounded-md dark:border-gray-800 shadow p-2 ">
                     <div className="relative bg-gray-200">
@@ -514,7 +445,7 @@ function Pants() {
                           </span>
                         </p>
                       </div>
-
+  
                       <a
                         href="#"
                         className="flex justify-center px-4 py-2 bg-indigo-700 text-gray-100 border border-indigo-300 rounded-full hover:opacity-[0.9]"
@@ -524,7 +455,7 @@ function Pants() {
                     </div>
                   </div>
                 </div>
-
+  
                 <div className="w-full px-3 mb-6 sm:w-1/2 md:w-1/3">
                   <div className="border border-gray-200 rounded-md dark:border-gray-800 shadow p-2 ">
                     <div className="relative bg-gray-200">
@@ -563,7 +494,7 @@ function Pants() {
                           </span>
                         </p>
                       </div>
-
+  
                       <a
                         href="#"
                         className="flex justify-center px-4 py-2 bg-indigo-700 text-gray-100 border border-indigo-300 rounded-full hover:opacity-[0.9]"
@@ -573,7 +504,7 @@ function Pants() {
                     </div>
                   </div>
                 </div>
-
+  
                 <div className="w-full px-3 mb-6 sm:w-1/2 md:w-1/3">
                   <div className="border border-gray-200 rounded-md dark:border-gray-800 shadow p-2 ">
                     <div className="relative bg-gray-200">
@@ -612,7 +543,7 @@ function Pants() {
                           </span>
                         </p>
                       </div>
-
+  
                       <a
                         href="#"
                         className="flex justify-center px-4 py-2 bg-indigo-700 text-gray-100 border border-indigo-300 rounded-full hover:opacity-[0.9]"
@@ -622,7 +553,7 @@ function Pants() {
                     </div>
                   </div>
                 </div>
-
+  
                 <div className="w-full px-3 mb-6 sm:w-1/2 md:w-1/3">
                   <div className="border border-gray-200 rounded-md dark:border-gray-800 shadow p-2 ">
                     <div className="relative bg-gray-200">
@@ -661,7 +592,7 @@ function Pants() {
                           </span>
                         </p>
                       </div>
-
+  
                       <a
                         href="#"
                         className="flex justify-center px-4 py-2 bg-indigo-700 text-gray-100 border border-indigo-300 rounded-full hover:opacity-[0.9]"
@@ -671,7 +602,7 @@ function Pants() {
                     </div>
                   </div>
                 </div>
-
+  
                 <div className="w-full px-3 mb-6 sm:w-1/2 md:w-1/3">
                   <div className="border border-gray-200 rounded-md dark:border-gray-800 shadow p-2 ">
                     <div className="relative bg-gray-200">
@@ -710,7 +641,7 @@ function Pants() {
                           </span>
                         </p>
                       </div>
-
+  
                       <a
                         href="#"
                         className="flex justify-center px-4 py-2 bg-indigo-700 text-gray-100 border border-indigo-300 rounded-full hover:opacity-[0.9]"
@@ -720,7 +651,7 @@ function Pants() {
                     </div>
                   </div>
                 </div>
-
+  
                 <div className="w-full px-3 mb-6 sm:w-1/2 md:w-1/3">
                   <div className="border border-gray-200 rounded-md dark:border-gray-800 shadow p-2 ">
                     <div className="relative bg-gray-200">
@@ -759,7 +690,7 @@ function Pants() {
                           </span>
                         </p>
                       </div>
-
+  
                       <a
                         href="#"
                         className="flex justify-center px-4 py-2 bg-indigo-700 text-gray-100 border border-indigo-300 rounded-full hover:opacity-[0.9]"
@@ -807,7 +738,7 @@ function Pants() {
                           </span>
                         </p>
                       </div>
-
+  
                       <a
                         href="#"
                         className="flex justify-center px-4 py-2 bg-indigo-700 text-gray-100 border border-indigo-300 rounded-full hover:opacity-[0.9]"
@@ -818,7 +749,7 @@ function Pants() {
                   </div>
                 </div>
               </div>
-
+  
               <div className="flex justify-end mt-6">
                 <nav aria-label="page-navigation">
                   <ul className="flex list-style-none">
@@ -869,8 +800,8 @@ function Pants() {
           </div>
         </div>
       </section>
-    </div>
+   </div>
   );
-}
+};
 
-export default Pants;
+export default Bag;

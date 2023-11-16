@@ -14,6 +14,7 @@ import NewProducts from "pages/public/Home/NewProducts";
 import Card from "pages/public/Home/NewProducts/Card";
 import ForgetPassword from "pages/public/ForgetPassword";
 import Product, { Pants, Polo, Shirt } from "pages/public/Product"
+import Bag from "pages/public/Product/Bag";
 import PoloDetail from "pages/public/Product/Polo/PoloDetail";
 import ShirtDetail from "pages/public/Product/Shirt/ShirtDetail";
 import PantsDetail from "pages/public/Product/Pants/PantsDetail";
@@ -22,9 +23,8 @@ import Contact from "pages/public/Contact";
 import Following from "pages/public/Following";
 import ConfirmOrder from "pages/public/ConfirmOrder"
 import Policy from "pages/public/Policy";
-import BlogDetail from "pages/public/Blog/BlogDetail";
-import Rules from "pages/public/Rules";
-import Information from "pages/public/Information";
+import Glasses from "pages/public/Product/Glasses";
+
 export const publicRoutes = {
     path: '/',
     element: <PublicLayout />,
@@ -35,7 +35,7 @@ export const publicRoutes = {
         },
         { path: '/cart', element: <Cart /> },
         { path: '/blog', element: <Blog /> },
-        { path: '/blogdetail', element: <BlogDetail /> },
+       
         { path: '/shirtdetail', element: <ShirtDetail /> },
         { path: '/deliverInfo', element: <DeliverInfo /> },
         { path: '/story', element: <Story /> },
@@ -54,13 +54,15 @@ export const publicRoutes = {
         { path: '/product/shirt/:id', element: <ShirtDetail /> },
         { path: '/product/pants', element: <Pants /> },
         { path: '/product/pants/:id', element: <PantsDetail /> },
+        { path: '/product/bag', element: <Bag /> },
+        { path: '/product/glasses', element: <Glasses /> },
+
         { path: '/about', element: <About /> },
         { path: '/contact', element: <Contact /> },
         { path: '/following', element: <Following /> },
         { path: '/confirmorder', element: <ConfirmOrder /> },
         { path: '/policy', element: <Policy /> },
-        { path: '/rules', element: <Rules /> },
-        { path: '/Information', element: <Information /> },
+       
         
     ]
 };
