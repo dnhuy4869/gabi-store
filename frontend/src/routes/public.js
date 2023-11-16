@@ -35,6 +35,8 @@ export const publicRoutes = {
             element: <HomePage />,
         },
         { path: '/cart', element: <Cart /> },
+        // { path: '/rules', element: <Rules /> },
+        // { path: '/information', element: <Information /> },
         { path: '/blog', element: <Blog /> },
         { path: '/deliverInfo', element: <DeliverInfo /> },
         { path: '/story', element: <Story /> },

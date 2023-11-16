@@ -13,7 +13,7 @@ export const HomePage = () => {
             {/* <Question/> */}
             <Category />
             <BestSeller />
-            <NewProducts type="GabiStore mùa hè"/>
+           
             <Description />
             <Story />
         </div>
