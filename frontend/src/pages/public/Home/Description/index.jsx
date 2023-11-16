@@ -22,7 +22,6 @@ function Description() {
               <img
                 className="relative z-20 object-cover w-full h-[500px] rounded"
                 src="https://i.pinimg.com/564x/56/53/19/565319df58e19953437f14b894ab9609.jpg"
-                alt
               />
             </div>
             <div className="flex-1 pl-0 lg:pl-4 h-[600px]">
