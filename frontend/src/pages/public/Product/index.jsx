@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Slider from "./slider";
 
-function ProductPage() {
+function ProducttPage() {
     return (
 
         <div className="">
@@ -951,7 +951,7 @@ function ProductPage() {
                   <ul className="flex list-style-none">
                     <li className="page-item disabled ">
                       <a
-                        href="#"
+                        href="#" 
                         className="relative block pointer-events-none px-3 py-1.5 mr-3 text-base text-gray-700 transition-all duration-300  rounded-md dark:text-gray-400 hover:text-gray-100 hover:bg-indigo-600"
                       >
                         Trước
@@ -1000,4 +1000,4 @@ function ProductPage() {
     );
 }
 
-export default ProductPage;
+export default ProducttPage;

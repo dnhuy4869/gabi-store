@@ -78,7 +78,7 @@ function Blog() {
         //     </div>
         // </div>
 
-        <section className="w-[1320px] m-auto flex items-center bg-white  dark:bg-gray-800 font-poppins">
+        <section className=" m-auto flex items-center bg-white  dark:bg-gray-800 font-poppins">
         <div className="p-4 mx-auto max-w-7xl h-full">
           <div className="mb-20 mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3 md:p-2 xl:p-4">
             <div className="w-full mb-6 border rounded-md shadow-md dark:bg-transparent dark:border-gray-700">

@@ -20,7 +20,8 @@ import Following from "pages/public/Following";
 import Policy from "pages/public/Policy";
 import Information from "pages/public/Information";
 import Rules from "pages/public/Rules";
-
+import ProducttPage from "pages/public/Product";
+import BlogCard from "pages/public/Blog/BlogCard";
 export const publicRoutes = {
     path: '/',
     element: <PublicLayout />,
@@ -30,10 +31,11 @@ export const publicRoutes = {
             element: <HomePage />,
         },
         { path: '/cart', element: <Cart /> },
+        { path: '/cartt', element: <BlogCard /> },
         { path: '/rules', element: <Rules /> },
         { path: '/information', element: <Information /> },
         { path: '/blog', element: <Blog /> },
-
+        { path: '/product', element: <ProducttPage /> },
         { path: '/deliverInfo', element: <DeliverInfo /> },
         { path: '/story', element: <Story /> },
         { path: '/slider', element: <Slider /> },
