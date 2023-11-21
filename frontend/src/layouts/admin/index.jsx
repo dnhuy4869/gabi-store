@@ -1,4 +1,4 @@
-import { useAuth } from "auth/use-auth";
+import { useAuth } from "hooks/use-auth";
 import Sidebar from "./sidebar"
 import Topbar from "./topbar"
 import { Outlet, useNavigate } from "react-router-dom"
@@ -10,7 +10,7 @@ export default function AdminLayout() {
     const { user } = useAuth();
 
     useEffect(() => {
-        if (!user) {
+        if (!user || user.role !== "ADMIN") {
             navigate("/");
         }
     }, [user]);

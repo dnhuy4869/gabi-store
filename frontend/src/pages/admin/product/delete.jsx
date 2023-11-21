@@ -17,9 +17,9 @@ export default function DeletePage({ id, fetchData }) {
 
     const navigate = useNavigate();
 
-    const deleteCategory = async () => {
+    const deleteProduct = async () => {
         try {
-            const resData = await Api.Delete(`/category/${id}`);
+            const resData = await Api.Delete(`/product/${id}`);
             if (!resData.isSuccess) {
                 setStatus(prevState => ({
                     isError: true,
@@ -65,7 +65,7 @@ export default function DeletePage({ id, fetchData }) {
                             <Button className="min-w-[100px]" color="gray" onClick={() => setOpenModal(false)}>
                                 Không
                             </Button>
-                            <Button className="min-w-[100px]" color="failure" onClick={() => deleteCategory()}>
+                            <Button className="min-w-[100px]" color="failure" onClick={() => deleteProduct()}>
                                 Có
                             </Button>
                         </div>
