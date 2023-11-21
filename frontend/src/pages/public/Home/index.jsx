@@ -1,21 +1,22 @@
+import PageLayout from "components/page-layout"
 import BestSeller from "./BestSeller"
 import Category from "./Catelogory"
-// import Description from "./Description"
+import Description from "./Description"
 import NewProducts from "./NewProducts"
 import Question from "./Question"
 import Slider from "./Slider"
-// import Story from "./Story"
+import Story from "./Story"
 
 export const HomePage = () => {
     return (
-        <div>
+        <PageLayout title="Trang chủ">
             <Slider />
             <Question/>
             <Category />
             <BestSeller />
             <NewProducts type="GabiStore mùa hè"/>
-            {/* <Description /> */}
-            {/* <Story /> */}
-        </div>
+            <Description />
+            <Story />
+        </PageLayout>
     )
 }
