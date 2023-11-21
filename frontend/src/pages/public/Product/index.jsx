@@ -398,13 +398,13 @@ function ProducttPage() {
                 <div className="w-full px-3 mb-6 sm:w-1/2 md:w-1/3">
                   <div className="border border-gray-200 rounded-md dark:border-gray-800 shadow p-2 ">
                     <div className="relative bg-gray-200">
-                      <a href="#" className>
+                      <Link to="/detail" className="">
                         <img
                           src="https://i.postimg.cc/NGCTCW70/pexels-mike-250288.jpg"
                           alt
                           className="object-cover w-full h-56 mx-auto "
                         />
-                      </a>
+                      </Link>
                      
                     </div>
                     <div className="p-5 bg-gray-50 dark:bg-gray-900">

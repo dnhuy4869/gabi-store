@@ -6,7 +6,7 @@ import Blog from "pages/public/Blog";
 import BlogDetail from "pages/public/Blog/BlogDetail";
 import DeliverInfo from "pages/public/DeliverInfo";
 import Story from "pages/public/Story";
-import StoryDetail from "pages/public/Home/Story/StoryDetail";
+// import StoryDetail from "pages/public/Home/Story/StoryDetail";
 import Slider from "pages/public/Home/Slider";
 import PostItem from "pages/public/Home/PostItem";
 // import Description from "pages/public/Home/Description";
@@ -22,7 +22,7 @@ import BillDetail from "pages/public/BillDetail"
 import Policy from "pages/public/Policy";
 import Rules from "pages/public/Rules";
 import Information from "pages/public/Information";
-
+import GlassesPage from "pages/public/Product/Glasses/glasses-detail";
 export const publicRoutes = {
     path: '/',
     element: <PublicLayout />,
@@ -37,7 +37,7 @@ export const publicRoutes = {
         { path: '/information', element: <Information /> },
         { path: '/blog', element: <Blog /> },
         { path: '/blog/:id', element: <BlogDetail /> },
-
+        { path: '/detail', element: <GlassesPage /> },
         { path: '/deliverInfo', element: <DeliverInfo /> },
         { path: '/story', element: <Story /> },
         { path: '/slider', element: <Slider /> },
