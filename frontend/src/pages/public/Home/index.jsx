@@ -3,7 +3,7 @@ import BestSeller from "./BestSeller"
 import Category from "./Catelogory"
 import Description from "./Description"
 import NewProducts from "./NewProducts"
-import Question from "./Question"
+// import Question from "./Question"
 import Slider from "./Slider"
 import Story from "./Story"
 
@@ -11,7 +11,7 @@ export const HomePage = () => {
     return (
         <PageLayout title="Trang chủ">
             <Slider />
-            <Question/>
+            {/* <Question/> */}
             <Category />
             <BestSeller />
             <NewProducts type="GabiStore mùa hè"/>
