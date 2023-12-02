@@ -1,16 +1,3 @@
-import styles from "./Product.module.scss";
-import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
-
-import Banner from "./Banner";
-import Shirt from "./Shirt";
-import Polo from "./Polo";
-import Pants from "./Pants";
-export { default as Shirt } from "./Shirt";
-export { default as Polo } from "./Polo";
-export { default as Pants } from "./Pants";
-
-const cx = classNames.bind(styles);
 
 function ProductAll() {
   return (
@@ -25,7 +12,6 @@ function ProductAll() {
     // </div>
 
     <div className="">
-      <Banner />
       <section className="py-20 bg-gray-50 font-poppins dark:bg-gray-800  ">
         <div className="px-4 py-4 mx-auto max-w-7xl lg:py-6 md:px-6">
           {/* Breadcumb */}
