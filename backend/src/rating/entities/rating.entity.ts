@@ -1,8 +1,7 @@
 import { Table, Column, Model, DataType } from 'sequelize-typescript';
 
 @Table
-export class Comment extends Model {
-
+export class Rating extends Model {
     @Column({
         type: DataType.INTEGER,
         autoIncrement: true,
@@ -25,8 +24,8 @@ export class Comment extends Model {
     userId: number;
 
     @Column({
-        type: DataType.STRING,
-        defaultValue: "",
+        type: DataType.DECIMAL(10, 2),
+        allowNull: false,
     })
-    content: string;
+    score: number;
 }

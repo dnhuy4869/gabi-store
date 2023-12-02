@@ -1,8 +1,7 @@
 import { Table, Column, Model, DataType } from 'sequelize-typescript';
 
 @Table
-export class Comment extends Model {
-
+export class Brand extends Model {
     @Column({
         type: DataType.INTEGER,
         autoIncrement: true,
@@ -13,20 +12,14 @@ export class Comment extends Model {
     id: number;
 
     @Column({
-        type: DataType.INTEGER,
+        type: DataType.STRING,
         allowNull: false,
     })
-    productId: number;
-
-    @Column({
-        type: DataType.INTEGER,
-        allowNull: false,
-    })
-    userId: number;
+    name: string;
 
     @Column({
         type: DataType.STRING,
         defaultValue: "",
     })
-    content: string;
+    imageUrl: string;
 }
