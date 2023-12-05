@@ -1,14 +1,24 @@
 import { API_URL } from "app/config";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { addToCart } from "redux/cart.slice";
 import utils from "utils";
 import { toast } from "react-toastify";
+import { useAuth } from "hooks/use-auth";
 
-export default function ProductItem({ product }) {
+export default function ProductItem({ product, isNew }) {
+
+    const { isAuthenticated } = useAuth();
+
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleAddToCart = (obj) => {
+        if (!isAuthenticated()) {
+            navigate("/auth/login");
+            return;
+        }
+
         dispatch(addToCart({
             idProduct: obj.id,
             name: obj.name,
@@ -21,21 +31,20 @@ export default function ProductItem({ product }) {
     }
 
     return (
-        <div className="border border-gray-200 rounded-md dark:border-gray-800 shadow p-2 ">
+        <div className="border border-gray-200 rounded-md dark:border-gray-800 shadow p-2">
             <div className="relative bg-gray-200">
-                <Link to={`/product-detail/${product.id}`} className="">
+                <Link to={`/product-detail/${product.id}`}>
                     <img
                         src={`${API_URL}${product.imageUrl}`}
-                        alt
+                        alt=""
                         className="object-cover w-full h-56 mx-auto "
                     />
                 </Link>
                 {
-                    product.isNew && product.isNew === true
+                    isNew && isNew === true
                         ? (
                             <div className="absolute top-0 right-0 z-10 m-2 flex items-center justify-center p-2 text-center bg-red-600 ">
                                 <span className="relative text-base font-normal text-gray-100 ">
-                                    {" "}
                                     New
                                 </span>
                             </div>
@@ -44,7 +53,7 @@ export default function ProductItem({ product }) {
                 }
             </div>
             <div className="p-5 bg-gray-50 dark:bg-gray-900">
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-4 min-h-[3rem]">
                     <h3 className="w-full text-xl font-medium dark:text-gray-400">
                         {product.name}
                     </h3>
@@ -55,7 +64,7 @@ export default function ProductItem({ product }) {
                             {utils.formatVND(product.price)}
                         </span>
                         <span className="ml-2 text-gray-400  dark:text-gray-400">
-                            <a href="#" className>
+                            <a href="#">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={16}
@@ -75,7 +84,7 @@ export default function ProductItem({ product }) {
                     onClick={() => handleAddToCart(product)}
                     className="w-full flex justify-center px-4 py-2 bg-indigo-700 text-gray-100 border border-indigo-300 rounded-full hover:opacity-[0.9]"
                 >
-                    Thêm vào giỏ
+                    Thêm vào giỏ hàng
                 </button>
             </div>
         </div>

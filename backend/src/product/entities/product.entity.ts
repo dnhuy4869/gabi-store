@@ -30,6 +30,12 @@ export class Product extends Model {
     price: number;
 
     @Column({
+        type: DataType.INTEGER,
+        allowNull: false,
+    })
+    viewCount: number;
+
+    @Column({
         type: DataType.STRING,
         defaultValue: "",
     })
@@ -40,4 +46,26 @@ export class Product extends Model {
         allowNull: false,
     })
     categoryId: number;
+
+    @Column({
+        type: DataType.STRING,
+        get: function () {
+            return JSON.parse(this.getDataValue('colors'));
+        },
+        set: function (val) {
+            return this.setDataValue('colors', JSON.stringify(val));
+        }
+    })
+    colors: string[];
+
+    @Column({
+        type: DataType.STRING,
+        get: function () {
+            return JSON.parse(this.getDataValue('sizes'));
+        },
+        set: function (val) {
+            return this.setDataValue('sizes', JSON.stringify(val));
+        }
+    })
+    sizes: string[];
 }
