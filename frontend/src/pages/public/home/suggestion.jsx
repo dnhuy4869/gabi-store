@@ -8,12 +8,20 @@ import ProductItem from "components/product-item";
 export default function SuggestionSection() {
 
     const [newestProducts, setNewestProducts] = useState([]);
+    const [bestRatingProducts, setBestRatingProducts] = useState([]);
+    const [bestViewProducts, setBestViewProducts] = useState([]);
 
     useEffect(() => {
         try {
             (async () => {
-                const res = await Api.Get("/product/find-newest");
+                let res = await Api.Get("/product/find-newest");
                 setNewestProducts(res.response);
+
+                res = await Api.Get("/product/find-best-rating");
+                setBestRatingProducts(res.response);
+
+                res = await Api.Get("/product/find-best-view");
+                setBestViewProducts(res.response);
             })();
         }
         catch (err) {
@@ -45,15 +53,11 @@ export default function SuggestionSection() {
         <div className="mx-auto max-w-screen-xl">
             <section className="">
                 <div className="p-4 mx-auto">
-                    <h2 className="pb-4 font-bold text-center text-gray-800 text-[24px] dark:text-gray-400 uppercase">
-                        Gợi ý dành cho bạn
-                    </h2>
-                    <div className="mx-auto border-b border-red-700 w-44 dark:border-gray-400" />
-
-                    <div className="mt-10">
-                        <h3 class="text-lg text-indigo-500 text-center font-semibold dark:text-white uppercase">
+                    <div className="">
+                        <h2 className="pb-4 font-bold text-center text-gray-800 text-[24px] dark:text-gray-400 uppercase">
                             Hàng mới về
-                        </h3>
+                        </h2>
+                        <div className="mx-auto border-b border-red-700 w-44 dark:border-gray-400" />
 
                         <div className="mt-4">
                             <Carousel
@@ -77,10 +81,11 @@ export default function SuggestionSection() {
                     </div>
 
                     {/* Love */}
-                    <div className="mt-10">
-                        <h3 class="text-lg text-indigo-500 text-center font-semibold dark:text-white uppercase">
-                            Sản phẩm yêu thích
-                        </h3>
+                    <div className="mt-20">
+                        <h2 className="pb-4 font-bold text-center text-gray-800 text-[24px] dark:text-gray-400 uppercase">
+                            Sản phẩm được đánh giá cao
+                        </h2>
+                        <div className="mx-auto border-b border-red-700 w-44 dark:border-gray-400" />
 
                         <div className="mt-4">
                             <Carousel
@@ -93,7 +98,7 @@ export default function SuggestionSection() {
                                 itemClass="px-2"
                             >
                                 {
-                                    newestProducts.map((obj, index) => {
+                                    bestRatingProducts.map((obj, index) => {
                                         return (
                                             <ProductItem key={index} product={obj} />
                                         )
@@ -103,10 +108,11 @@ export default function SuggestionSection() {
                         </div>
                     </div>
 
-                    <div className="mt-10">
-                        <h3 class="text-lg text-indigo-500 text-center font-semibold dark:text-white uppercase">
-                            Sản phẩm được quan tâm
-                        </h3>
+                    <div className="mt-20">
+                        <h2 className="pb-4 font-bold text-center text-gray-800 text-[24px] dark:text-gray-400 uppercase">
+                            Sản phẩm có nhiều lượt xem
+                        </h2>
+                        <div className="mx-auto border-b border-red-700 w-44 dark:border-gray-400" />
 
                         <div className="mt-4">
                             <Carousel
@@ -119,7 +125,7 @@ export default function SuggestionSection() {
                                 itemClass="px-2"
                             >
                                 {
-                                    newestProducts.map((obj, index) => {
+                                    bestViewProducts.map((obj, index) => {
                                         return (
                                             <ProductItem key={index} product={obj} />
                                         )
