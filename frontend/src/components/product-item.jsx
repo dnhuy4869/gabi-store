@@ -26,6 +26,8 @@ export default function ProductItem({ product, isNew }) {
             imageUrl: obj.imageUrl,
             price: obj.price,
             amount: 1,
+            color: "Tự do",
+            size: "Tự do",
         }));
 
         toast.success("Đã thêm vào giỏ hàng", {
@@ -38,7 +40,9 @@ export default function ProductItem({ product, isNew }) {
     return (
         <div className="border border-gray-200 rounded-md dark:border-gray-800 shadow p-2">
             <div className="relative bg-gray-200">
-                <Link to={`/product-detail/${product.id}`}>
+                <Link
+                    to={`/product-detail/${product.id}`}
+                >
                     <img
                         src={`${API_URL}${product.imageUrl}`}
                         alt=""
