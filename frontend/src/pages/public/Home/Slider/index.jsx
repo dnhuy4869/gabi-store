@@ -1,5 +1,5 @@
 import { API_URL } from "app/config";
-import styles from "./slider.module.scss";
+import styles from "./Slider.module.scss";
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 import { Carousel } from 'flowbite-react';

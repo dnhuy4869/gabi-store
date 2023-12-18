@@ -1,22 +1,22 @@
 import PublicLayout from "layouts/public";
-import HomePage from "pages/public/home";
-import ProductPage from "pages/public/product";
+import HomePage from "pages/public/Home";
+import ProductPage from "pages/public/Product";
 import ProductDetailPage from "pages/public/product-detail";
-import ContactPage from "pages/public/contact";
-import PolicyPage from "pages/public/policy";
-import AboutPage from "pages/public/about";
-import CartPage from "pages/public/cart";
+import ContactPage from "pages/public/Contact";
+import PolicyPage from "pages/public/Policy";
+import AboutPage from "pages/public/About";
+import CartPage from "pages/public/Cart";
 import CheckoutPage from "pages/public/checkout";
 import BillPage from "pages/public/bill";
 import BillDetailPage from "pages/public/bill-detail"
 import WishlistPage from "pages/public/wishlist";
-import BlogPage from "pages/public/blog";
+import BlogPage from "pages/public/blog";   
 import BlogDetailPage from "pages/public/blog/blog-detail";
 
-import Story from "pages/public/story";
-import StoryDetail from "pages/public/home/Story/StoryDetail";
-import PostItem from "pages/public/home/PostItem";
-import Catelog from "pages/public/home/Catelog"
+import Story from "pages/public/Story";
+import StoryDetail from "pages/public/Home/Story/StoryDetail";
+import PostItem from "pages/public/Home/PostItem";
+import Catelog from "pages/public/Home/Catelog"
 
 import Following from "pages/public/Following";
 
