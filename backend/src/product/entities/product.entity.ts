@@ -31,7 +31,7 @@ export class Product extends Model {
 
     @Column({
         type: DataType.INTEGER,
-        allowNull: false,
+        defaultValue: 0,
     })
     viewCount: number;
 
@@ -40,12 +40,6 @@ export class Product extends Model {
         defaultValue: "",
     })
     description: string;
-
-    @Column({
-        type: DataType.INTEGER,
-        allowNull: false,
-    })
-    categoryId: number;
 
     @Column({
         type: DataType.STRING,
@@ -68,4 +62,16 @@ export class Product extends Model {
         }
     })
     sizes: string[];
+
+    @Column({
+        type: DataType.INTEGER,
+        allowNull: false,
+    })
+    categoryId: number;
+
+    @Column({
+        type: DataType.INTEGER,
+        defaultValue: 0,
+    })
+    brandId: number;
 }

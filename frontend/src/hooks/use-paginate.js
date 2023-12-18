@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 
 export const usePaginate = (itemPerPage) => {
 
@@ -38,6 +39,9 @@ export const usePaginate = (itemPerPage) => {
         setFilteredItems(data);
     }
 
+    const canPrev = currentPage <= 1;
+    const canNext = currentPage >= totalPages;
+
     const Pagination = () => {
 
         const handleClick = (page) => {
@@ -47,52 +51,64 @@ export const usePaginate = (itemPerPage) => {
         };
 
         return (
-            <nav aria-label="page-navigation">
-                <ul className="flex list-style-none">
-                    {/* Previous Button */}
-                    <li
-                        className='page-item'
-                        disabled={currentPage === 1}
-                    >
-                        <button
-                            onClick={() => handleClick(currentPage - 1)}
-                            className="relative block px-3 py-1.5 text-base text-gray-700 transition-all duration-300 dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-indigo-100 rounded-md mr-3 "
-                        >
-                            Trước
-                        </button>
-                    </li>
+            <div>
+                {
+                    totalPages && totalPages > 1 ? (
+                        <nav aria-label="page-navigation">
+                            <ul className="flex list-style-none">
+                                {/* Previous Button */}
+                                <li
+                                    className={`page-item ${!canPrev ? "pointer-events-none" : null}`}
+                                >
+                                    <button
+                                        disabled={!canPrev}
+                                        onClick={() => handleClick(currentPage - 1)}
+                                        className="relative block px-3 py-1.5 text-base text-gray-700 transition-all duration-300 dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-indigo-100 rounded-md mr-3 "
+                                    >
+                                        Trước
+                                    </button>
+                                </li>
 
-                    {/* Page Buttons */}
-                    {Array.from({ length: totalPages }).map((_, index) => (
-                        <li key={index} className="page-item">
-                            <button
-                                onClick={() => handleClick(index + 1)}
-                                className={`relative block px-3 py-1.5 text-base ${currentPage === index + 1
-                                    ? 'text-gray-100 bg-indigo-600'
-                                    : 'text-gray-700 hover:text-indigo-700 dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-indigo-100'
-                                    } transition-all duration-300 rounded-md mr-3`}
-                            >
-                                {index + 1}
-                            </button>
-                        </li>
-                    ))}
+                                {/* Page Buttons */}
+                                {Array.from({ length: totalPages }).map((_, index) => (
+                                    <li key={index} className="page-item">
+                                        <button
+                                            onClick={() => handleClick(index + 1)}
+                                            className={`relative block px-3 py-1.5 text-base ${currentPage === index + 1
+                                                ? 'text-gray-100 bg-indigo-600'
+                                                : 'text-gray-700 hover:text-indigo-700 dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-indigo-100'
+                                                } transition-all duration-300 rounded-md mr-3`}
+                                        >
+                                            {index + 1}
+                                        </button>
+                                    </li>
+                                ))}
 
-                    {/* Next Button */}
-                    <li
-                        className='page-item'
-                        disabled={currentPage === totalPages}
-                    >
-                        <button
-                            onClick={() => handleClick(currentPage + 1)}
-                            className="relative block px-3 py-1.5 text-base text-gray-700 transition-all duration-300 dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-indigo-100 rounded-md mr-3 "
-                        >
-                            Sau
-                        </button>
-                    </li>
-                </ul>
-            </nav>
+                                {/* Next Button */}
+                                <li
+                                    className='page-item'
+                                    disabled={currentPage >= totalPages}
+                                >
+                                    <button
+                                        onClick={() => handleClick(currentPage + 1)}
+                                        className="relative block px-3 py-1.5 text-base text-gray-700 transition-all duration-300 dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-indigo-100 rounded-md mr-3 "
+                                    >
+                                        Sau
+                                    </button>
+                                </li>
+                            </ul>
+                        </nav>
+                    )
+                        : null
+                }
+            </div>
         );
     }
 
-    return { items, setItems, totalItems, onSortItems, setTotalPages, onSearchItems, Pagination };
+    return {
+        items, setItems,
+        totalItems, onSortItems,
+        setTotalPages, onSearchItems,
+        setCurrentPage, Pagination
+    };
 }

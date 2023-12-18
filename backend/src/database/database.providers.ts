@@ -2,6 +2,7 @@ import { Sequelize } from 'sequelize-typescript';
 import { BillDetail } from 'src/bill-detail/entities/bill-detail.entity';
 import { Bill } from 'src/bill/entities/bill.entity';
 import { Blog } from 'src/blog/entities/blog.entity';
+import { Brand } from 'src/brand/entities/brand.entity';
 import { Category } from 'src/category/entities/category.entity';
 import { Comment } from 'src/comment/entities/comment.entity';
 import { Product } from 'src/product/entities/product.entity';
@@ -18,6 +19,15 @@ const createRelationship = () => {
 
     Product.belongsTo(Category, {
         foreignKey: 'categoryId',
+    });
+
+    Brand.hasMany(Product, {
+        onDelete: 'CASCADE',
+        foreignKey: 'brandId',
+    });
+
+    Product.belongsTo(Brand, {
+        foreignKey: 'brandId',
     });
 
     User.hasMany(Blog, {
@@ -117,10 +127,12 @@ export const databaseProviders = [
         useFactory: async () => {
             const sequelize = new Sequelize({
                 dialect: 'mysql',
+                // username: 'new_user',
+                // password: 'password',
+                username: "root",
+                password: "",
                 host: 'localhost',
                 port: 3306,
-                username: 'root',
-                password: '',
                 database: 'gabi_store',
             });
 
@@ -135,6 +147,7 @@ export const databaseProviders = [
                 Comment,
                 Wishlist,
                 Rating,
+                Brand,
             ]);
 
             createRelationship();
