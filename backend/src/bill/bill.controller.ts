@@ -1,5 +1,7 @@
-import { Controller, Get, Post, Body, Patch, Req,
-     Param, Delete, InternalServerErrorException, UseGuards } from '@nestjs/common';
+import {
+    Controller, Get, Post, Body, Patch, Req,
+    Param, Delete, InternalServerErrorException, UseGuards, Query
+} from '@nestjs/common';
 import { BillService } from './bill.service';
 import { CreateBillDto } from './dto/create-bill.dto';
 import { UpdateBillDto } from './dto/update-bill.dto';
@@ -30,6 +32,31 @@ export class BillController {
     findAll() {
         try {
             return this.billService.findAll();
+        }
+        catch (err) {
+            throw new InternalServerErrorException();
+        }
+    }
+
+    @ApiSecurity('private-key')
+    @UseGuards(AdminGuard)
+    @Delete(':id')
+    remove(@Param('id') id: string) {
+        try {
+            return this.billService.remove(+id);
+        }
+        catch (err) {
+            throw new InternalServerErrorException();
+        }
+    }
+
+    @ApiSecurity('private-key')
+    @UseGuards(AdminGuard)
+    @Get("find-revenue")
+    findRevenue(@Query('months') months: number) {
+        try {
+            months = months ? Number(months) : 10;
+            return this.billService.findRevenue(months);
         }
         catch (err) {
             throw new InternalServerErrorException();

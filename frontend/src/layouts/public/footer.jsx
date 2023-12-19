@@ -15,15 +15,37 @@ export default function Footer() {
                                 <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Gabi Store</span>
                             </Link>
                         </div>
-                        <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                        <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-5">
                             <div>
                                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Về Gabi</h2>
                                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                                     <li className="mb-4">
-                                        <a href="https://flowbite.com/" className="hover:underline">Liên hệ</a>
+                                        <Link to="/contact" className="hover:underline">Liên hệ</Link>
                                     </li>
                                     <li>
-                                        <a href="https://tailwindcss.com/" className="hover:underline">Giới thiệu</a>
+                                        <Link to="/about" className="hover:underline">Giới thiệu</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Về Gabi</h2>
+                                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                                    <li className="mb-4">
+                                        <Link to="/contact" className="hover:underline">Liên hệ</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/about" className="hover:underline">Giới thiệu</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Về Gabi</h2>
+                                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                                    <li className="mb-4">
+                                        <Link to="/contact" className="hover:underline">Liên hệ</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/about" className="hover:underline">Giới thiệu</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -42,10 +64,10 @@ export default function Footer() {
                                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Chính sách</h2>
                                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                                     <li className="mb-4">
-                                        <a href="#" className="hover:underline">Chính sách bảo mật</a>
+                                        <Link to="/information" className="hover:underline">Chính sách bảo mật</Link>
                                     </li>
                                     <li>
-                                        <a href="#" className="hover:underline">Điều khoản sử dụng</a>
+                                        <Link to="/rules" className="hover:underline">Điều khoản sử dụng</Link>
                                     </li>
                                 </ul>
                             </div>

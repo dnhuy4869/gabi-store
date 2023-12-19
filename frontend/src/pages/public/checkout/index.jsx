@@ -4,12 +4,13 @@ import PageLayout from "components/page-layout";
 import * as Yup from "yup";
 import { useAuth } from "hooks/use-auth";
 import Api from "app/api";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import utils from "utils";
 import { toast } from "react-toastify";
 import { API_URL } from "app/config";
+import { clearCart } from "redux/cart.slice";
 
 export default function CheckoutPage() {
 
@@ -38,6 +39,7 @@ export default function CheckoutPage() {
     const { user } = useAuth();
 
     const cart = useSelector(state => state.cart.cart);
+    const dispatch = useDispatch();
 
     const totalPrice = useMemo(() => {
         return cart.reduce((acc, cartItem) => acc + cartItem.amount * cartItem.price, 0)
@@ -47,9 +49,9 @@ export default function CheckoutPage() {
         enableReinitialize: true,
         initialValues: {
             fullName: user.fullName,
-            email: "",
-            address: "",
-            phoneNumber: "",
+            email: user.email,
+            address: user.address,
+            phoneNumber: user.phoneNumber,
         },
         validationSchema: Yup.object({
             fullName: Yup.string()
@@ -110,6 +112,8 @@ export default function CheckoutPage() {
                 ...prevState,
                 isSubmit: false,
             }));
+
+            dispatch(clearCart());
 
             navigate(`/bill-detail/${billData.response.id}`);
         },
@@ -207,7 +211,6 @@ export default function CheckoutPage() {
                                                     name="check"
                                                     id={obj.id}
                                                     type="radio"
-                                                    defaultValue
                                                     className="w-4 h-4 text-indigo-600 bg-gray-100 border-indigo-300 rounded-full focus:ring-indigo-500 focus:ring-2"
                                                 />
                                                 <label

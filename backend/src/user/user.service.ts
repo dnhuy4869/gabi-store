@@ -1,4 +1,4 @@
-import { Injectable, Inject, HttpException, HttpStatus, BadRequestException } from '@nestjs/common';
+import { Injectable, Inject, HttpException, HttpStatus, BadRequestException, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
@@ -63,6 +63,42 @@ export class UserService {
         return new UserDto(record);
     }
 
+    async resetPassword(id: number, newPassword: string) {
+        const record = await this.userRepository.findOne<User>({
+            where: { id: id },
+        });
+
+        if (!record) {
+            throw new HttpException('No record found', HttpStatus.NOT_FOUND);
+        }
+
+        record.password = await this.hashPassword(newPassword);
+
+        await record.save();
+
+        return new UserDto(record);
+    }
+
+    async verifyUser(id: number) {
+        const record = await this.userRepository.findOne<User>({
+            where: { id: id },
+        });
+
+        if (!record) {
+            throw new NotFoundException("Invalid id");
+        }
+
+        if (record.isEmailVerified === true) {
+            return "Email is already verified";
+        }
+
+        record.isEmailVerified = true;
+
+        await record.save()
+
+        return "Verified successfully";
+    }
+
     async findOneByEmail(email: string): Promise<UserDto | undefined> {
         const record = await this.userRepository.findOne<User>({
             where: { email: email },
@@ -96,7 +132,7 @@ export class UserService {
 
     async remove(id: number, user: any) {
         if (id == user.userId) {
-            throw new BadRequestException("You cannot delete yourself");   
+            throw new BadRequestException("You cannot delete yourself");
         }
 
         const record = await this.userRepository.findOne<User>({
@@ -121,6 +157,10 @@ export class UserService {
 
         if (!record) {
             throw new HttpException('No record found', HttpStatus.NOT_FOUND);
+        }
+
+        if (image.name.length > 155) {
+            throw new BadRequestException("File name too long");
         }
 
         const fileName = `/upload/user/${record.id}/${image.md5}/${image.name}`;
@@ -158,5 +198,9 @@ export class UserService {
         });
 
         return !!record;
+    }
+
+    async count() {
+        return await this.userRepository.count();
     }
 }

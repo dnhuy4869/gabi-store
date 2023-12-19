@@ -1,4 +1,4 @@
-import { Injectable, Inject, HttpException, HttpStatus, UnauthorizedException } from '@nestjs/common';
+import { Injectable, Inject, HttpException, HttpStatus, UnauthorizedException, NotFoundException } from '@nestjs/common';
 import { CreateBillDto } from './dto/create-bill.dto';
 import { UpdateBillDto } from './dto/update-bill.dto';
 import { Bill } from './entities/bill.entity';
@@ -6,6 +6,7 @@ import { UserService } from 'src/user/user.service';
 import { BillDto } from './dto/bill.dto';
 import { BillDetailService } from 'src/bill-detail/bill-detail.service';
 import { CreateBillDetailDto } from 'src/bill-detail/dto/create-bill-detail.dto';
+import { Op, fn, col, literal } from 'sequelize';
 
 @Injectable()
 export class BillService {
@@ -44,8 +45,14 @@ export class BillService {
         return new BillDto(billData);
     }
 
-    findAll() {
-        return `This action returns all bill`;
+    async findAll() {
+        const data = await this.billRepository.findAll<Bill>({
+            order: [
+                ['id', 'DESC']
+            ]
+        });
+
+        return data.map(obj => new BillDto(obj));
     }
 
     async findOne(id: number) {
@@ -66,7 +73,7 @@ export class BillService {
 
     async findOneByUser(idUser: number, idBill: number) {
         const record = await this.billRepository.findOne<Bill>({
-            where: { 
+            where: {
                 id: idBill,
                 userId: idUser,
             },
@@ -96,5 +103,46 @@ export class BillService {
         });
 
         return data.map(obj => new BillDto(obj));
+    }
+
+    async findRevenue(months: number) {
+
+        const count = await this.billRepository.count();
+        if (count <= 0) {
+            return [];
+        }
+
+        const date = new Date();
+        date.setMonth(date.getMonth() - months);
+
+        const revenue = await this.billRepository.findAll({
+            attributes: [
+                [fn('date_format', col('createdAt'), '%m/%Y'), 'date'],
+                [fn('sum', col('totalPrice')), 'revenue']
+            ],
+            where: {
+                createdAt: {
+                    [Op.gte]: date
+                }
+            },
+            group: [fn('MONTH', col('createdAt')), fn('YEAR', col('createdAt'))],
+            raw: true,
+        });
+
+        return revenue;
+    }
+
+    async remove(id: number) {
+        const record = await this.billRepository.findOne<Bill>({
+            where: { id: id },
+        });
+
+        if (!record) {
+            throw new NotFoundException('No record found');
+        }
+
+        await record.destroy();
+
+        return "Deleted successfully";
     }
 }
