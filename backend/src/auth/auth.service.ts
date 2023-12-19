@@ -82,7 +82,7 @@ export class AuthService {
 </body>
 </html>`;
 
-        this.mailService.sendMail(data.email, subject, html);
+        await this.mailService.sendMail(data.email, subject, html);
 
         return res;
     }

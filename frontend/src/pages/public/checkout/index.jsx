@@ -29,16 +29,20 @@ export default function CheckoutPage() {
 
     const { status, setStatus } = useApiStatus();
 
-    const { user } = useAuth();
+    const { user } = useAuth();;
 
     const cart = useSelector(state => state.cart.cart);
     const dispatch = useDispatch();
 
     useEffect(() => {
+        if (!user) {
+            navigate("/auth/login");
+        }
+
         if (!cart || cart.length <= 0) {
             navigate("/product");
         }
-    }, [user]);
+    }, [user, cart]);
 
     const totalPrice = useMemo(() => {
         return cart.reduce((acc, cartItem) => acc + cartItem.amount * cartItem.price, 0)

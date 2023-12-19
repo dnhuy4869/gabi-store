@@ -5,14 +5,14 @@ import { API_URL } from "app/config";
 
 export default function Profile() {
 
-    const nagivate = useNavigate();
+    const navigate = useNavigate();
 
     const { user, logoutUser } = useAuth();
 
     const handleLogout = async () => {
 
         await logoutUser();
-        nagivate("/auth/login");
+        navigate("/auth/login");
     }
 
     return (
@@ -31,15 +31,19 @@ export default function Profile() {
                 {
                     (user && user.role == "ADMIN") ? (
                         <>
-                            <Dropdown.Item>
-                                <Link to="/admin" >Trang quản trị</Link>
+                            <Dropdown.Item onClick={() => navigate("/admin")}>
+                                Trang quản trị
                             </Dropdown.Item>
                         </>
                     )
                         : null
                 }
-                <Dropdown.Item><Link to="/user-settings" >Hồ sơ của tôi</Link></Dropdown.Item>
-                <Dropdown.Item><Link to="/bill" >Đơn hàng</Link></Dropdown.Item>
+                <Dropdown.Item onClick={() => navigate("/user-settings")}>
+                    Hồ sơ của tôi
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => navigate("/bill")}>
+                    Đơn hàng
+                </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={() => handleLogout()}>Đăng xuất</Dropdown.Item>
             </Dropdown>

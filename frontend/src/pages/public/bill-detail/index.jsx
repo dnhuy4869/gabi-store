@@ -29,6 +29,12 @@ export default function BillDetailPage() {
     const { user } = useAuth();
 
     useEffect(() => {
+        if (!user) {
+            navigate("/auth/login");
+        }
+    }, [user]);
+
+    useEffect(() => {
         (async () => {
 
             if (!user) {

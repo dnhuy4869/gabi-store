@@ -14,7 +14,14 @@ import { usePaginate } from "hooks/use-paginate";
 
 export default function BillPage() {
 
+    const navigate = useNavigate();
     const { user } = useAuth();
+
+    useEffect(() => {
+        if (!user) {
+            navigate("/auth/login");
+        }
+    }, [user]);
 
     const ITEMS_PER_PAGE = 4;
     const {
@@ -25,6 +32,10 @@ export default function BillPage() {
 
     useEffect(() => {
         try {
+            if (!user) {
+                return;
+            }
+
             (async () => {
                 const res = await Api.Get(`/bill/find-all/${user.userId}`);
                 if (!res.isSuccess) {
@@ -39,13 +50,13 @@ export default function BillPage() {
         catch (err) {
             console.log(err);
         }
-    }, []);
+    }, [user]);
 
     return (
         <PageLayout title="Đơn hàng">
             <section className="mx-auto max-w-screen-xl py-10">
                 <div className="px-4">
-                    <h1 class="text-center mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900">
+                    <h1 className="text-center mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900">
                         Đơn hàng
                     </h1>
                     <div className="mt-10" align="center">

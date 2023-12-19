@@ -20,16 +20,24 @@ export class MailService {
     ) { }
 
     private async setTransport() {
+
+        const CLIENT_ID = "1032800312030-e4mfbdmr6jg9qha0r3m1no9hljmjfiqi.apps.googleusercontent.com";
+        const CLIENT_SECRET = "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";
+        const REFRESH_TOKEN = "1//04GUcASIOLocACgYIARAAGAQSNwF-L9IrPqSbV42sNRcvWjK8ltG_wLL4_cL0QOE8pUfac2KX7pi7loLYJFiiWCAny3zQb8MSd0U";
+        const EMAIL = "dnhuy4869@gmail.com";
+
         const OAuth2 = google.auth.OAuth2;
         const oauth2Client = new OAuth2(
-            this.configService.get('CLIENT_ID'),
-            this.configService.get('CLIENT_SECRET'),
+            CLIENT_ID,
+            CLIENT_SECRET,
             'https://developers.google.com/oauthplayground',
         );
 
         oauth2Client.setCredentials({
-            refresh_token: process.env.REFRESH_TOKEN,
+            refresh_token: REFRESH_TOKEN,
         });
+
+        //console.log(EMAIL);
 
         const accessToken: string = await new Promise((resolve, reject) => {
             oauth2Client.getAccessToken((err, token) => {
@@ -44,9 +52,9 @@ export class MailService {
             service: 'gmail',
             auth: {
                 type: 'OAuth2',
-                user: this.configService.get('EMAIL'),
-                clientId: this.configService.get('CLIENT_ID'),
-                clientSecret: this.configService.get('CLIENT_SECRET'),
+                user: EMAIL,
+                clientId: CLIENT_ID,
+                clientSecret: CLIENT_SECRET,
                 accessToken,
             },
         };
@@ -125,7 +133,7 @@ export class MailService {
 </body>
 </html>`;
 
-        this.sendMail(data.email, subject, html);
+        await this.sendMail(data.email, subject, html);
 
         return "Email sent successfully";
     }
