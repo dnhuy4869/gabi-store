@@ -148,7 +148,7 @@ export const useProductPaginate = (itemPerPage) => {
                 <ul className="flex list-style-none">
                     {/* Previous Button */}
                     <li
-                        className={`page-item ${!canPrev ? "pointer-events-none" : null}`}
+                        className={`page-item ${!canPrev ? "pointer-events-none opacity-[0.9]" : null}`}
                     >
                         <button
                             disabled={!canPrev}
@@ -163,7 +163,7 @@ export const useProductPaginate = (itemPerPage) => {
 
                     {/* Next Button */}
                     <li
-                        className={`page-item ${!canNext ? "pointer-events-none" : null}`}
+                        className={`page-item ${!canNext ? "pointer-events-none opacity-[0.9]" : null}`}
                     >
                         <button
                             disabled={!canNext}
