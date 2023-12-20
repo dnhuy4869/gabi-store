@@ -78,7 +78,6 @@ export default function UpdatePage({ id, fetchData }) {
         validationSchema: Yup.object({
             name: Yup.string()
                 .required("Đây là dữ liệu bắt buộc")
-                .min(6, `Cần ít nhất 6 ký tự`)
                 .max(255, `Không thể vượt quá 255 ký tự`),
         }),
         onSubmit: async (values, { resetForm }) => {

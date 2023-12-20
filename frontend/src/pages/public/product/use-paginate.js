@@ -76,6 +76,9 @@ export const useProductPaginate = (itemPerPage) => {
         setFilteredItems(data);
     }
 
+    const canPrev = currentPage > 1;
+    const canNext = currentPage < totalPages;
+
     const Pagination = () => {
 
         const displayPages = 5;
@@ -145,10 +148,10 @@ export const useProductPaginate = (itemPerPage) => {
                 <ul className="flex list-style-none">
                     {/* Previous Button */}
                     <li
-                        className='page-item'
-                        disabled={currentPage === 1}
+                        className={`page-item ${!canPrev ? "pointer-events-none" : null}`}
                     >
                         <button
+                            disabled={!canPrev}
                             onClick={() => handleClick(currentPage - 1)}
                             className="relative block px-3 py-1.5 text-base text-gray-700 transition-all duration-300 dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-indigo-100 rounded-md mr-3 "
                         >
@@ -160,10 +163,10 @@ export const useProductPaginate = (itemPerPage) => {
 
                     {/* Next Button */}
                     <li
-                        className='page-item'
-                        disabled={currentPage === totalPages}
+                        className={`page-item ${!canNext ? "pointer-events-none" : null}`}
                     >
                         <button
+                            disabled={!canNext}
                             onClick={() => handleClick(currentPage + 1)}
                             className="relative block px-3 py-1.5 text-base text-gray-700 transition-all duration-300 dark:text-gray-400 dark:hover:bg-gray-700 hover:bg-indigo-100 rounded-md mr-3 "
                         >

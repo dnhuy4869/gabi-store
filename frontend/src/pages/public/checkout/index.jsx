@@ -42,7 +42,7 @@ export default function CheckoutPage() {
         if (!cart || cart.length <= 0) {
             navigate("/product");
         }
-    }, [user, cart]);
+    }, [user]);
 
     const totalPrice = useMemo(() => {
         return cart.reduce((acc, cartItem) => acc + cartItem.amount * cartItem.price, 0)
