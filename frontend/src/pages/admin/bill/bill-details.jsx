@@ -113,7 +113,7 @@ export default function BillDetailPage({ id, fetchData }) {
                                                                         src={`${API_URL}${obj.imageUrl}`}
                                                                         alt="" />
                                                                     <div className="">
-                                                                        <p className="font-semibold">
+                                                                        <p className="font-semibold pr-3">
                                                                             {obj.name}
                                                                         </p>
                                                                         <div>

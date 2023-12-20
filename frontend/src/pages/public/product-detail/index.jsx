@@ -362,9 +362,7 @@ export default function ProductDetailPage() {
                                 {
                                     relatedProducts.map((obj, index) => {
                                         return (
-                                            <div key={index} className="" onClick={() => {
-                                                window.scrollTo({ top: 0, behavior: 'smooth' });
-                                            }}>
+                                            <div key={index} className="">
                                                 <ProductItem key={index} product={obj} />
                                             </div>
                                         )

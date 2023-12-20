@@ -50,7 +50,7 @@ export default function ProductItem({ product, isNew }) {
             const res = await Api.Get(`/wishlist/is-liked/${user.userId}/${product.id}`);
 
             if (!res.isSuccess) {
-                //toast.error("Đã có lỗi xảy ra");
+                toast.error("Đã có lỗi xảy ra");
                 return;
             }
 
@@ -86,11 +86,11 @@ export default function ProductItem({ product, isNew }) {
     }
 
     return (
-        <div className="border border-gray-200 rounded-md dark:border-gray-800 shadow p-2">
+        <div className="border border-gray-200 rounded-md dark:border-gray-800 shadow p-2 h-[430px]">
             <div className="relative bg-gray-200">
                 <Link
                     onClick={() => {
-                        window.scrollTo(0, 0);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
                     to={`/product-detail/${product.id}`}
                 >
@@ -157,6 +157,7 @@ export default function ProductItem({ product, isNew }) {
                 </div>
 
                 <button
+                    type="button"
                     onClick={() => handleAddToCart(product)}
                     className="w-full flex justify-center px-4 py-2 bg-indigo-700 text-gray-100 border border-indigo-300 rounded-full hover:opacity-[0.9]"
                 >

@@ -48,7 +48,9 @@ export default function ProductPage() {
         selectedCategories, setSelectedCategories,
         selectedBrands, setSelectedBrands,
         onSortItems, setTotalPages,
-        onSearchItems, Pagination
+        onSearchItems,
+        keyword, setKeyword,
+        Pagination
     } = useProductPaginate(PRODUCTS_PER_PAGE);
 
     // Handle redirect from home page
@@ -57,6 +59,7 @@ export default function ProductPage() {
 
     const category = queryParams.get('category');
     const brand = queryParams.get('brand');
+    const qr_keyword = queryParams.get('keyword');
 
     useEffect(() => {
         if (category && category > 0) {
@@ -66,7 +69,11 @@ export default function ProductPage() {
         if (brand && brand > 0) {
             setSelectedBrands([parseInt(brand)]);
         }
-    }, [category, brand]);
+
+        if (qr_keyword && qr_keyword !== "") {
+            setKeyword(qr_keyword);
+        }
+    }, [category, brand, qr_keyword]);
 
     useEffect(() => {
         try {
@@ -255,10 +262,15 @@ export default function ProductPage() {
                                                 </svg>
                                             </div>
                                             <input
-                                                onChange={(e) => onSearchItems(e.target.value)}
+                                                name="searchValue"
+                                                value={keyword || ""}
+                                                onChange={(e) => {
+                                                    setKeyword(e.target.value)
+                                                    onSearchItems(e.target.value)
+                                                }}
                                                 type="text"
-                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full ps-10 p-2.5  "
-                                                placeholder="Tìm kiếm sản phẩm" required />
+                                                className="w-[400px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full ps-10 p-2.5  "
+                                                placeholder="Tìm kiếm sản phẩm" />
                                         </div>
                                     </div>
 

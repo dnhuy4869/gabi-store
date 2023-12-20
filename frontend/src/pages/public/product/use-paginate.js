@@ -183,6 +183,8 @@ export const useProductPaginate = (itemPerPage) => {
         selectedCategories, setSelectedCategories,
         selectedBrands, setSelectedBrands,
         onSortItems, setTotalPages,
-        onSearchItems, Pagination
+        onSearchItems,
+        keyword, setKeyword,
+        Pagination
     };
 }

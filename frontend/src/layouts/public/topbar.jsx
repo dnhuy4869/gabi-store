@@ -1,9 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "images/logo.png";
 import { useMemo, useState } from "react";
 import { useAuth } from "hooks/use-auth";
 import Profile from "components/profile";
 import { useSelector } from "react-redux";
+import { Modal } from "flowbite-react";
 
 export default function Topbar() {
 
@@ -31,10 +32,14 @@ export default function Topbar() {
     ], []);
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     const { user } = useAuth();
 
     const cart = useSelector((state) => state.cart.cart);
+
+    const [searchModalOpen, setSearchModalOpen] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
 
     return (
         <header className="sticky top-0 z-50">
@@ -53,6 +58,13 @@ export default function Topbar() {
                         {
                             !user ? (
                                 <>
+                                    <button
+                                        onClick={() => setSearchModalOpen(true)}
+                                        className="p-2 mr-1 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 hover:ring-4 hover:ring-gray-300">
+                                        <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                        </svg>
+                                    </button>
                                     <Link
                                         to="/auth/login"
                                         className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
@@ -70,6 +82,14 @@ export default function Topbar() {
                                 : (
                                     <>
                                         <div className="flex items-center lg:order-2">
+                                            <button
+                                                onClick={() => setSearchModalOpen(true)}
+                                                className="p-2 mr-1 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 hover:ring-4 hover:ring-gray-300">
+                                                <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                                </svg>
+                                            </button>
+
                                             {/* Cart */}
                                             <Link to="/cart">
                                                 <button className="relative p-2 mr-1 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 hover:ring-4 hover:ring-gray-300">
@@ -139,6 +159,35 @@ export default function Topbar() {
                             </svg>
                         </button>
                     </div>
+                    <Modal
+                        position="top-center"
+                        dismissible
+                        show={searchModalOpen}
+                        onClose={() => setSearchModalOpen(false)}>
+                        <Modal.Body>
+                            <div>
+                                <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Tìm kiếm</label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                        <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                        </svg>
+                                    </div>
+                                    <input
+                                        name="searchValue"
+                                        onChange={(e) => setSearchValue(e.target.value)}
+                                        type="search" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Tìm kiếm sản phẩm" />
+                                    <button
+                                        onClick={() => {
+                                            setSearchModalOpen(false);
+                                            navigate(`/product?keyword=${searchValue}`);
+                                        }}
+                                        type="button"
+                                        className="text-white absolute end-2.5 bottom-2.5 bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2">Tìm kiếm</button>
+                                </div>
+                            </div>
+                        </Modal.Body>
+                    </Modal>
                     <div
                         className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
                         id="mobile-menu-2"

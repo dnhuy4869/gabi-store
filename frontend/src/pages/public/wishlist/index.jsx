@@ -133,7 +133,7 @@ export default function WishlistPage() {
                                                                     src={`${API_URL}${obj.Product?.imageUrl}`}
                                                                     alt="" />
                                                                 <div className="">
-                                                                    <p className="font-semibold">
+                                                                    <p className="font-semibold pr-3">
                                                                         {obj.Product?.name}
                                                                     </p>
                                                                     <div>
