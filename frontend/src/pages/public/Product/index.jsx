@@ -269,7 +269,7 @@ export default function ProductPage() {
                                                     onSearchItems(e.target.value)
                                                 }}
                                                 type="text"
-                                                className="w-[400px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full ps-10 p-2.5  "
+                                                className="w-[400px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block ps-10 p-2.5"
                                                 placeholder="Tìm kiếm sản phẩm" />
                                         </div>
                                     </div>
