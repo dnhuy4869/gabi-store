@@ -32,12 +32,12 @@ export default function BrandSection() {
             items: 5
         },
         tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 3
+            breakpoint: { max: 1024, min: 580 },
+            items: 2
         },
         mobile: {
-            breakpoint: { max: 464, min: 0 },
-            items: 2
+            breakpoint: { max: 580, min: 0 },
+            items: 1
         }
     };
 

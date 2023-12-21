@@ -44,7 +44,7 @@ export default function SliderSection() {
                         <span className={cx('btn')}>
                             <Link
                                 to="/about"
-                                className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                                className="mt-4 sm:mt-0 inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
                             >
                                 Định hướng GabiStore
                             </Link>
@@ -52,9 +52,9 @@ export default function SliderSection() {
                     </div>
                     <div className="hidden lg:mt-0 lg:col-span-5 lg:flex h-72">
                         <Carousel>
-                            <img src={`${API_URL}/upload/banner/banner.jpg`} className="w-full h-full" alt="..." />
-                            <img src={`${API_URL}/upload/banner/banner2.jfif`} alt="..." />
-                            <img src={`${API_URL}/upload/banner/banner3.jfif`} alt="..." />
+                            <Link to="/product"><img src={`${API_URL}/upload/banner/banner.jpg`} alt="..." /></Link>
+                            <Link to="/product"> <img src={`${API_URL}/upload/banner/banner2.jfif`} alt="..." /></Link>
+                            <Link to="/product"> <img src={`${API_URL}/upload/banner/banner3.jfif`} alt="..." /></Link>
                         </Carousel>
                     </div>
                 </div>

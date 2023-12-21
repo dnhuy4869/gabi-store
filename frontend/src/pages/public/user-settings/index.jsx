@@ -63,6 +63,12 @@ export default function UserSettingsPage() {
             if (user.fullName === data.fullName
                 && user.phoneNumber === data.phoneNumber
                 && user.address === data.address) {
+
+                setStatus(prevState => ({
+                    ...prevState,
+                    isSubmit: false,
+                }));
+
                 return;
             }
 

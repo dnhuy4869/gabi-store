@@ -33,6 +33,9 @@ export default function WishlistPage() {
     } = usePaginate(ITEMS_PER_PAGE);
 
     const fecthData = async () => {
+        if (!isAuthenticated()) {
+            return;
+        }
 
         const res = await Api.Get(`/wishlist/find-all/${user.userId}`);
         if (!res.isSuccess) {
@@ -107,7 +110,7 @@ export default function WishlistPage() {
         <>
             <PageLayout title="Yêu thích">
                 <section className="mx-auto max-w-screen-xl py-10">
-                    <h1 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900">
+                    <h1 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900">
                         Yêu thích
                     </h1>
                     <div className="flex flex-col md:flex-row gap-4">

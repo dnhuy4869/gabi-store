@@ -27,7 +27,7 @@ export default function BillPage() {
                 actions: (
                     <div className="w-full flex justify-end items-center gap-2 text-right">
                         <div><BillDetailPage id={obj.id} fetchData={fetchData} /></div>
-                        <div><DeletePage id={obj.id} fetchData={fetchData} /></div>
+                        {/* <div><DeletePage id={obj.id} fetchData={fetchData} /></div> */}
                     </div>
                 )
             }

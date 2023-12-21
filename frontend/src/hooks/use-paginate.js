@@ -66,8 +66,8 @@ export const usePaginate = (itemPerPage) => {
             </li>
         );
 
-        const renderEllipsis = () => (
-            <li key="ellipsis" className="page-item">
+        const renderEllipsis = (key) => (
+            <li key={key} className="page-item">
                 <span className="relative block px-3 py-1.5 text-base text-gray-700 dark:text-gray-400">
                     ...
                 </span>
@@ -88,7 +88,7 @@ export const usePaginate = (itemPerPage) => {
             if (start > 0) {
                 buttons.push(renderPageButton(0));
                 if (start > 1) {
-                    buttons.push(renderEllipsis());
+                    buttons.push(renderEllipsis("elipsis1"));
                 }
             }
 
@@ -98,7 +98,7 @@ export const usePaginate = (itemPerPage) => {
 
             if (end < totalPages - 1) {
                 if (end < totalPages - 2) {
-                    buttons.push(renderEllipsis());
+                    buttons.push(renderEllipsis("elipsis2"));
                 }
                 buttons.push(renderPageButton(totalPages - 1));
             }

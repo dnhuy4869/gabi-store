@@ -7,6 +7,7 @@ import { BillDto } from './dto/bill.dto';
 import { BillDetailService } from 'src/bill-detail/bill-detail.service';
 import { CreateBillDetailDto } from 'src/bill-detail/dto/create-bill-detail.dto';
 import { Op, fn, col, literal } from 'sequelize';
+import { MailService } from 'src/mail/mail.service';
 
 @Injectable()
 export class BillService {
@@ -16,11 +17,12 @@ export class BillService {
 
         private userSerivce: UserService,
         private billDetailService: BillDetailService,
+        private mailService: MailService,
     ) { }
 
     async create(data: CreateBillDto) {
-        const isExists = await this.userSerivce.isExists(data.userId);
-        if (!isExists) {
+        const user = await this.userSerivce.findOne(data.userId);
+        if (!user) {
             throw new HttpException('User is not exist', HttpStatus.NOT_FOUND);
         }
 
@@ -41,6 +43,28 @@ export class BillService {
             obj.billId = billData.id;
             await this.billDetailService.create(obj);
         })
+
+        const subject = "Hóa đơn mua hàng từ Gabi Store";
+        const html = `<!DOCTYPE html>
+<html>
+<head>
+    <title>Hóa đơn mua hàng</title>
+</head>
+<body>
+    <h1>Xin chào ${data.fullName},</h1>
+    <p>Cảm ơn bạn đã mua sắm tại Gabi Store. Dưới đây là chi tiết hóa đơn của bạn:</p>
+    <ul>
+      ${data.details.map(obj => `<li>${obj.name}: ${obj.price} (Số lượng: ${obj.quantity})</li>`).join('')}
+    </ul>
+    <p>Tổng cộng: ${data.totalPrice}</p>
+    <p>Phương thức thanh toán: ${data.paymentMethod === 'COD' ? 'Thanh toán khi nhận hàng' : 'PayPal'}</p>
+    <p>Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ với chúng tôi.</p>
+    <p>Trân trọng,</p>
+    <p>Đội ngũ Gabi Store</p>
+</body>
+</html>`;
+
+        await this.mailService.sendMail(user.email, subject, html);
 
         return new BillDto(billData);
     }

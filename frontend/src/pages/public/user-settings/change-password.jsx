@@ -34,8 +34,6 @@ export const ChangePasswordSection = ({ user }) => {
         }),
         onSubmit: async (values, { resetForm }) => {
 
-            console.log("wtffff ?");
-
             setStatus(prevState => ({
                 ...prevState,
                 isSubmit: true

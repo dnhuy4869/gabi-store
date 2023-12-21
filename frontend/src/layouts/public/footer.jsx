@@ -14,7 +14,7 @@ export default function Footer() {
     useEffect(() => {
         try {
             (async () => {
-                let res = await Api.Get("/brand/find-paginate?limit=2");
+                let res = await Api.Get("/brand/find-paginate?limit=4");
                 if (res.isSuccess) {
                     setBrands(res.response.data);
                 }
@@ -23,7 +23,7 @@ export default function Footer() {
                     return;
                 }
 
-                res = await Api.Get("/category/find-paginate?limit=2");
+                res = await Api.Get("/category/find-paginate?limit=4");
                 if (res.isSuccess) {
                     setCategories(res.response.data);
                 }

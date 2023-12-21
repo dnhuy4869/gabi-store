@@ -53,14 +53,14 @@ export default function Topbar() {
                         <img src={Logo} className="mr-3 h-6 sm:h-9" alt="Logo" />
                         <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Gabi Store</span>
                     </Link>
-                    <div className="flex items-center lg:order-2">
+                    <div className="flex items-center lg:order-2 mt-2">
                         {/* Login & Profile */}
                         {
                             !user ? (
                                 <>
                                     <button
                                         onClick={() => setSearchModalOpen(true)}
-                                        className="p-2 mr-1 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 hover:ring-4 hover:ring-gray-300">
+                                        className="hidden sm:block p-2 mr-1 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 hover:ring-4 hover:ring-gray-300">
                                         <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                         </svg>

@@ -5,9 +5,15 @@ import { billProviders } from './bill.providers';
 import { DatabaseModule } from 'src/database/database.module';
 import { UserModule } from 'src/user/user.module';
 import { BillDetailModule } from 'src/bill-detail/bill-detail.module';
+import { MailModule } from 'src/mail/mail.module';
 
 @Module({
-    imports: [DatabaseModule, UserModule, BillDetailModule],
+    imports: [
+        DatabaseModule,
+        UserModule,
+        BillDetailModule,
+        MailModule,
+    ],
     controllers: [BillController],
     providers: [
         BillService,

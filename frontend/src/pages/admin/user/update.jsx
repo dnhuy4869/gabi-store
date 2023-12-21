@@ -80,11 +80,11 @@ export default function UpdatePage({ id, fetchData }) {
             role: currUser.role,
         },
         validationSchema: Yup.object({
-            email: Yup.string()
-                .required("Đây là dữ liệu bắt buộc")
-                .email()
-                .min(6, `Cần ít nhất 6 ký tự`)
-                .max(255, `Không thể vượt quá 255 ký tự`),
+            // email: Yup.string()
+            //     .required("Đây là dữ liệu bắt buộc")
+            //     .email()
+            //     .min(6, `Cần ít nhất 6 ký tự`)
+            //     .max(255, `Không thể vượt quá 255 ký tự`),
             password: Yup.string()
                 .required("Đây là dữ liệu bắt buộc"),
             fullName: Yup.string()
@@ -153,11 +153,11 @@ export default function UpdatePage({ id, fetchData }) {
                 </button>
             </div>
             <Modal show={openModal} onClose={() => setOpenModal(false)}>
-                <Modal.Header className="pb-4">Thêm người dùng</Modal.Header>
+                <Modal.Header className="pb-4">Sửa người dùng</Modal.Header>
                 <Modal.Body className="pt-2">
                     <form onSubmit={formik.handleSubmit}>
                         <div className="grid gap-4 mb-6 sm:grid-cols-2">
-                            <div>
+                            {/* <div>
                                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                                 <input
                                     type="text"
@@ -173,7 +173,7 @@ export default function UpdatePage({ id, fetchData }) {
                                         {formik.errors.email}
                                     </p>
                                 )}
-                            </div>
+                            </div> */}
                             <div>
                                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                                 <input

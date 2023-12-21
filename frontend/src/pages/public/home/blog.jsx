@@ -25,7 +25,11 @@ export default function BlogSection() {
     }, []);
 
     return (
-        <div className="mx-auto max-w-screen-xl">
+        <div className="mx-auto max-w-screen-xl mt-96 sm:mt-3">
+            <h2 className="mt-14 font-bold text-center text-gray-800 text-[24px] dark:text-gray-400 uppercase">
+                Bài viết
+            </h2>
+            <div className="mx-auto border-b border-red-700 w-44 dark:border-gray-400" />
             <div className="p-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {
                     blogs.map((obj, index) => {

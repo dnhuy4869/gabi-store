@@ -61,6 +61,7 @@ export default function ProductItem({ product, isNew }) {
 
     const handleLiked = async () => {
         if (!isAuthenticated()) {
+            navigate("/auth/login");
             return;
         }
 
@@ -114,7 +115,7 @@ export default function ProductItem({ product, isNew }) {
             </div>
             <div className="p-5 bg-gray-50 dark:bg-gray-900">
                 <div className="flex items-center justify-between mb-2 min-h-[3rem]">
-                    <h3 className="w-full text-xl font-medium dark:text-gray-400 text-ellipsis line-clamp-2">
+                    <h3 className="h-[56px] w-full text-xl font-medium dark:text-gray-400 text-ellipsis line-clamp-2">
                         {product.name}
                     </h3>
                 </div>

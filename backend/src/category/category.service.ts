@@ -108,7 +108,7 @@ export class CategoryService {
             throw new HttpException('No record found', HttpStatus.NOT_FOUND);
         }
 
-        if (image.name.length > 155) {
+        if (image.name.length > 255) {
             throw new BadRequestException("File name too long");
         }
 
